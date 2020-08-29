@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { format } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { View, ActivityIndicator } from 'react-native';
-import { parseISO } from 'date-fns/esm/fp';
+import { parseISO } from 'date-fns';
 import {
   Container,
   Content,
@@ -16,7 +16,6 @@ import {
   TitleText,
   CardInfo,
   CardInfoValue,
-  // CardInfoLastValue,
   ListTitle,
   ListTitleText,
   AddButton,

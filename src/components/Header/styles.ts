@@ -12,11 +12,10 @@ export const Content = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
 `;
 
 export const LogoImg = styled.Image`
-  width: 170px;
+  max-width: 150px;
 `;
 
 export const DateText = styled.Text`

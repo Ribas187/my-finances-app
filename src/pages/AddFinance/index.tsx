@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Feather } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native';
 import {
   Container,
   Content,
@@ -21,6 +22,9 @@ const AddFinance: React.FC = () => {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [category, setCategory] = useState('');
+
+  const priceRef = useRef<TextInput>(null);
+  const categoryRef = useRef<TextInput>(null);
 
   const finances = useFinances();
   const { addFinance } = finances;
@@ -59,12 +63,17 @@ const AddFinance: React.FC = () => {
           placeholder="Descrição"
           value={description}
           onChangeText={e => setDescription(e)}
+          onSubmitEditing={() => priceRef.current?.focus()}
+          returnKeyType="next"
         />
         <Input
+          ref={priceRef}
           placeholder="Preço"
           keyboardType="numeric"
           value={value}
           onChangeText={e => setValue(e)}
+          onSubmitEditing={() => categoryRef.current?.focus()}
+          returnKeyType="next"
         />
 
         <CategoryArea>
@@ -85,9 +94,12 @@ const AddFinance: React.FC = () => {
         </CategoryArea>
 
         <Input
+          ref={categoryRef}
           placeholder="Categoria"
           value={category}
           onChangeText={e => setCategory(e)}
+          returnKeyType="done"
+          onSubmitEditing={hadleAddFinance}
         />
 
         <AddButton onPress={hadleAddFinance}>
