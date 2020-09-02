@@ -29,6 +29,7 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": "off",
     "import/no-extraneous-dependencies": "off",
     "react/style-prop-object": "off",
     "prettier/prettier": "error",

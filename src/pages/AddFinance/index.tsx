@@ -2,7 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import { Feather } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
-import { TextInput } from 'react-native';
+import { TextInput, Alert } from 'react-native';
 import {
   Container,
   Content,
@@ -40,9 +40,25 @@ const AddFinance: React.FC = () => {
   }, []);
 
   const hadleAddFinance = useCallback(async () => {
+    const formatted = Number(value.replace(',', '.'));
+
+    if (!description || !category || !value) {
+      Alert.alert('Erro', 'Preencha todos os campos', [{ text: 'OK' }]);
+
+      return;
+    }
+
+    if (!formatted) {
+      Alert.alert('Erro', 'Use somente números e pontuações válidas no valor', [
+        { text: 'OK' },
+      ]);
+
+      return;
+    }
+
     const finance = {
       description,
-      value: Number(value),
+      value: formatted,
       category,
       type: selected,
       date: new Date().toISOString(),
@@ -51,6 +67,10 @@ const AddFinance: React.FC = () => {
     await addFinance(finance);
     navigation.navigate('Dashboard');
   }, [addFinance, category, description, selected, value, navigation]);
+
+  const handleGoBack = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   return (
     <Container>
@@ -68,7 +88,7 @@ const AddFinance: React.FC = () => {
         />
         <Input
           ref={priceRef}
-          placeholder="Preço"
+          placeholder="Valor (R$)"
           keyboardType="numeric"
           value={value}
           onChangeText={e => setValue(e)}
@@ -82,14 +102,14 @@ const AddFinance: React.FC = () => {
             onPress={() => handleChangeSelected('income')}
           >
             <Feather name="arrow-up-circle" size={30} color="#12A454" />
-            <CategoryText>Income</CategoryText>
+            <CategoryText>Entrada</CategoryText>
           </CategoryButton>
           <CategoryButton
             selected={selected === 'outcome'}
             onPress={() => handleChangeSelected('outcome')}
           >
             <Feather name="arrow-down-circle" size={30} color="#E83F5B" />
-            <CategoryText>Outcome</CategoryText>
+            <CategoryText>Saída</CategoryText>
           </CategoryButton>
         </CategoryArea>
 
@@ -104,6 +124,10 @@ const AddFinance: React.FC = () => {
 
         <AddButton onPress={hadleAddFinance}>
           <AddButtonText>Adicionar</AddButtonText>
+        </AddButton>
+
+        <AddButton onPress={handleGoBack}>
+          <AddButtonText>Cancelar</AddButtonText>
         </AddButton>
       </Content>
     </Container>

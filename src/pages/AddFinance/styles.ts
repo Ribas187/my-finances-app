@@ -15,11 +15,13 @@ export const Content = styled.ScrollView.attrs({
 `;
 
 export const Title = styled.Text`
+  font-family: 'Poppins_400Regular';
   font-size: 25px;
   margin-bottom: 12px;
 `;
 
 export const Input = styled.TextInput`
+  font-family: 'Poppins_400Regular';
   background: #fff;
   border-radius: 5px;
   height: 50px;
@@ -44,6 +46,7 @@ export const CategoryButton = styled.TouchableOpacity<ICategoryProps>`
 `;
 
 export const CategoryText = styled.Text`
+  font-family: 'Poppins_400Regular';
   font-size: 16px;
 `;
 
@@ -59,6 +62,7 @@ export const AddButton = styled.TouchableOpacity`
 `;
 
 export const AddButtonText = styled.Text`
+  font-family: 'Poppins_500Medium';
   font-size: 18px;
   color: #fff;
 `;

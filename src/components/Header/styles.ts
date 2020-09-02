@@ -19,6 +19,7 @@ export const LogoImg = styled.Image`
 `;
 
 export const DateText = styled.Text`
+  font-family: 'Poppins_400Regular';
   font-size: 14px;
   color: #fff;
   opacity: 0.6;

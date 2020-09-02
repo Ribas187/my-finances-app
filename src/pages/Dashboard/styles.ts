@@ -38,6 +38,7 @@ export const Title = styled.View`
 `;
 
 export const TitleText = styled.Text<CardProps>`
+  font-family: 'Poppins_400Regular';
   font-size: 16px;
   color: ${props => (!props.total ? '#000' : '#fff')};
 `;
@@ -49,11 +50,13 @@ export const CardInfo = styled.View`
 `;
 
 export const CardInfoValue = styled.Text<CardProps>`
+  font-family: 'Poppins_400Regular';
   font-size: ${props => (!props.total ? '30' : '40')}px;
   color: ${props => (!props.total ? '#000' : '#fff')};
 `;
 
 export const CardInfoLastValue = styled.Text`
+  font-family: 'Poppins_400Regular';
   color: #969cb3;
   font-size: 12px;
 `;
@@ -69,6 +72,7 @@ export const ListTitle = styled.View`
 `;
 
 export const ListTitleText = styled.Text`
+  font-family: 'Poppins_400Regular';
   font-size: 28px;
   margin-bottom: 15px;
 `;
@@ -93,10 +97,12 @@ export const MainArea = styled.View`
 export const TitleArea = styled.View``;
 
 export const Description = styled.Text`
+  font-family: 'Poppins_400Regular';
   font-size: 16px;
 `;
 
 export const Value = styled.Text<ValueProps>`
+  font-family: 'Poppins_400Regular';
   font-size: 20px;
   color: ${props => (props.type === 'income' ? '#12a454' : '#E83F5B')};
   line-height: 30px;
@@ -116,10 +122,12 @@ export const Category = styled.View`
 `;
 
 export const CategoryText = styled.Text`
+  font-family: 'Poppins_400Regular';
   margin-left: 10px;
   color: #969cb3;
 `;
 
 export const DateText = styled.Text`
+  font-family: 'Poppins_400Regular';
   color: #969cb3;
 `;
